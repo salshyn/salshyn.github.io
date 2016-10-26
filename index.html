@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My first react file</title>
+    <link rel="stylesheet" href="basic.css">
     <script src="https://fb.me/react-15.2.1.js"></script>
     <script src="https://fb.me/react-dom-15.2.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
@@ -18,19 +19,13 @@
 <div id="root"></div>
 
 <script type="text/babel">
-  
-
   var Note = React.createClass({
-
     edit() {
       alert("edit clicked")
     },
-
     remove() {
       alert("remove clicked")
     },
-
-  
     render() {
       return <div className="note">
           <p></p>
@@ -39,7 +34,6 @@
         </div>
     }
   })
-
   ReactDOM.render(<Note></Note>, document.getElementById('root'))
 </script>
 
