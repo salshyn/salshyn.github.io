@@ -16,44 +16,31 @@
 
 
 <div id="root"></div>
-<div id="root2"></div>
-<div id="root3"></div>
 
 <script type="text/babel">
-  var MyComponent = React.createClass({
+  
+
+  var Note = React.createClass({
+
+    edit() {
+      alert("edit clicked")
+    },
+
+    remove() {
+      alert("remove clicked")
+    },
+
+  
     render() {
-      return <div>
-      <p>test</p>
-      </div>
+      return <div className="note">
+          <p></p>
+          <button onClick={this.edit}>EDIT</button>
+          <button onClick={this.remove}>X</button>
+        </div>
     }
   })
 
-  class YourComponent extends React.Component {
-    render() {
-      return <div>
-      <p>test2</p>
-      </div>
-    }
-  }
-
-  const HisComponent = () => {
-      return <div>
-      <p>test3</p>
-      </div>
-  }
-
-  ReactDOM.render(<MyComponent />,
-    document.getElementById('root')
-  );
-
-  ReactDOM.render(<YourComponent />,
-    document.getElementById('root2')
-  );
-
-  ReactDOM.render(<HisComponent />,
-    document.getElementById('root3')
-  );
-
+  ReactDOM.render(<Note></Note>, document.getElementById('root'))
 </script>
 
 </body>
