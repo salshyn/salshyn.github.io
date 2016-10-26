@@ -2,15 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Salamat React!</title>
+    <title>My first react file</title>
     <script src="https://unpkg.com/react@15/dist/react.js"></script>
 	<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
-	<script>
-		ReactDOM.render(
-	  <h1>Hello, world!</h1>,
-	  document.getElementById('root')
-	);
-	</script>
+	
 
 </head>
 <body>
@@ -18,8 +13,10 @@
 salamat up and running
 
 <div id="root"></div>
-
-
+<script>
+		ReactDOM.render(React.createElement('div', null, 'Salamat up and running'),
+			document.getElementById('root'))
+	</script>
 
 </body>
 </html>
