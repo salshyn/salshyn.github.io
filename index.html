@@ -12,16 +12,48 @@
 
 <img src="http://m.memegen.com/ie2327.jpg" width="100" height="100">
 
+
+
+
 <div id="root"></div>
+<div id="root2"></div>
+<div id="root3"></div>
+
 <script type="text/babel">
-  ReactDOM.render(
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-    </ul>,
+  var MyComponent = React.createClass({
+    render() {
+      return <div>
+      <p>test</p>
+      </div>
+    }
+  })
+
+  class YourComponent extends React.Component {
+    render() {
+      return <div>
+      <p>test2</p>
+      </div>
+    }
+  }
+
+  const HisComponent = () => {
+      return <div>
+      <p>test3</p>
+      </div>
+  }
+
+  ReactDOM.render(<MyComponent />,
     document.getElementById('root')
-  )
+  );
+
+  ReactDOM.render(<YourComponent />,
+    document.getElementById('root2')
+  );
+
+  ReactDOM.render(<HisComponent />,
+    document.getElementById('root3')
+  );
+
 </script>
 
 </body>
