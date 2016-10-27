@@ -9,105 +9,106 @@
     </head>
     <body>
         <div id='react-container'></div>
+
         <script type="text/babel">
-        var Note = React.createClass({
-            getInitialState() {
-                return {editing: false}
-            },
-            edit() {
-                this.setState({editing: true})
-            },
-            save() {
-                this.props.onChange(this.refs.newText.value, this.props.id)
-                this.setState({editing: false})
-            },
-            remove() {
-                this.props.onRemove(this.props.id)
-            },
-            renderForm() {
-                return (
-                    <div className="note">
-                      <textarea ref="newText"></textarea>
-                      <button onClick={this.save}>SAVE</button>
-                    </div>
-                )
-            },
-            renderDisplay() {
-                return ( 
-                    <div className="note">
-                        <p>{this.props.children}</p>
-                        <span>
+
+            /**
+             * Created by sam.alshyn on 10/27/16.
+             */
+            var Note = React.createClass({
+                getInitialState() {
+                    return {editing: false}
+                },
+                edit() {
+                    this.setState({editing: true})
+                },
+                save() {
+                    this.props.onChange(this.refs.newText.value, this.props.id)
+                    this.setState({editing: false})
+                },
+                remove() {
+                    this.props.onRemove(this.props.id)
+                },
+                renderForm() {
+                    return (
+                            <div className="note">
+                                <textarea ref="newText"></textarea>
+                                <button onClick={this.save}>SAVE</button>
+                            </div>
+                    )
+                },
+                renderDisplay() {
+                    return (
+                            <div className="note">
+                                <p>{this.props.children}</p>
+                                <span>
                           <button onClick={this.edit}>EDIT</button>
                           <button onClick={this.remove}>X</button>
                         </span>
-                    </div>
+                            </div>
                     )
-            },
-            render() {
-              return (this.state.editing) ? this.renderForm()
-                                          : this.renderDisplay()
+                },
+                render() {
+                    return (this.state.editing) ? this.renderForm()
+                            : this.renderDisplay()
 
-            }
-        })
-
-        var Board = React.createClass({
-            propTypes: {
-                count: function(props, propName) {
-                    if(typeof props[propName] !== "number") {
-                        return new Error("the count must be a number")
-                    } 
-
-                    if(props[propName] > 100) {
-                        return new Error('Creating ' + props[propName] + ' notes is ridiculous')
-                    }
                 }
-            },
-            getInitialState() {
-                return {
-                    notes: [
-                      {id: 0, note: 'Call Bob'},
-                      {id: 1, note: 'Email Sarah'},
-                      {id: 2, note: 'Eat Lunch'},
-                      {id: 3, note: 'Finish proposal'}
-                    ]
-                }
-            },
-            update(newText, id) {
-                var notes = this.state.notes.map(
-                    note => (note.id !== id) ?
-                       note : 
-                        {
-                            ...note, 
-                            note: newText
+            });
+
+            var Board = React.createClass({
+                propTypes: {
+                    count: function(props, propName) {
+                        if(typeof props[propName] !== "number") {
+                            return new Error("the count must be a number")
                         }
-                    )
-                this.setState({notes})
-            },
-            remove(id) {
-                var notes = this.state.notes.filter(note => note.id !== id)
-                this.setState({notes})
-            },
-            eachNote(note) {
-                return (<Note key={note.id}
-                              id={note.id}
-                              onChange={this.update}
-                              onRemove={this.remove}>
-                          {note.note}
-                        </Note>)
-            },
-            render() {
-                return (<div className='board'>
-                           {this.state.notes.map(this.eachNote)}
-                        </div>)
-            }
-        })
-        
-        ReactDOM.render(<Board count={10}/>, 
-            document.getElementById('react-container'))
 
+                        if(props[propName] > 100) {
+                            return new Error('Creating ' + props[propName] + ' notes is ridiculous')
+                        }
+                    }
+                },
+                getInitialState() {
+                    return {
+                        notes: [
+                            {id: 0, note: 'Microsoft'},
+                            {id: 1, note: 'Google'},
+                            {id: 2, note: 'Amazon'},
+                            {id: 3, note: 'The Beatles'}
+                        ]
+                    }
+                },
+                update(newText, id) {
+                    var notes = this.state.notes.map(
+                            note => (note.id !== id) ?
+                                    note :
+                            {
+                                ...note,
+                                note: newText
+                            }
+                    );
+                    this.setState({notes})
+                },
+                remove(id) {
+                    var notes = this.state.notes.filter(note => note.id !== id)
+                    this.setState({notes})
+                },
+                eachNote(note) {
+                    return (<Note key={note.id}
+                                  id={note.id}
+                                  onChange={this.update}
+                                  onRemove={this.remove}>
+                        {note.note}
+                    </Note>)
+                },
+                render() {
+                    return (<div className='board'>
+                        {this.state.notes.map(this.eachNote)}
+                    </div>)
+                }
+            });
+
+            ReactDOM.render(<Board count={10}/>,
+                    document.getElementById('react-container'))
         </script>
     </body>
 </html>
-
-
-
