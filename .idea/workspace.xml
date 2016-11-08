@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28ceccf7-7123-4ea0-845a-219c2e0464a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/basic.css" afterPath="$PROJECT_DIR$/basic.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="salshyn.github.io.iws" />
@@ -27,10 +26,10 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="832">
-              <caret line="201" column="40" selection-start-line="201" selection-start-column="40" selection-end-line="201" selection-end-column="40" />
+            <state relative-caret-position="150">
+              <caret line="10" column="108" selection-start-line="10" selection-start-column="108" selection-end-line="10" selection-end-column="108" />
               <folding>
-                <element signature="e#1167#1236#0" expanded="false" />
+                <element signature="e#1283#1352#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -211,12 +210,12 @@
       <option name="presentableId" value="Default" />
       <updated>1477610485251</updated>
       <workItem from="1477611550453" duration="620000" />
-      <workItem from="1478558891045" duration="3319000" />
+      <workItem from="1478558891045" duration="3872000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3939000" />
+    <option name="totallyTimeSpent" value="4492000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1779" y="-563" width="1484" height="1417" extended-state="0" />
@@ -262,7 +261,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1167#1236#0" expanded="false" />
+            <element signature="e#1283#1352#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -272,7 +271,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1167#1236#0" expanded="false" />
+            <element signature="e#1283#1352#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -283,7 +282,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1167#1236#0" expanded="false" />
+            <element signature="e#1283#1352#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -299,10 +298,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="201" column="40" selection-start-line="201" selection-start-column="40" selection-end-line="201" selection-end-column="40" />
+        <state relative-caret-position="150">
+          <caret line="10" column="108" selection-start-line="10" selection-start-column="108" selection-end-line="10" selection-end-column="108" />
           <folding>
-            <element signature="e#1167#1236#0" expanded="false" />
+            <element signature="e#1283#1352#0" expanded="false" />
           </folding>
         </state>
       </provider>

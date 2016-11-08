@@ -8,6 +8,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
         <link rel="stylesheet" type="text/css" href="basic.css">
         <title>PageFossil</title>
@@ -148,8 +149,10 @@
 
 
                                 <div id="carousel">
-                                    <div><img width="100%" height="100%" src="http://www.paceblade.com/wp-content/gallery/software/shutterstock_132341783.jpg"/></div>
-                                    <div><img width="200%" height="100%" src="https://zagomattia.it/wp-content/uploads/2015/02/software.jpg"/></div>
+                                    <div><img width="300px" height="150px" src="http://www.paceblade.com/wp-content/gallery/software/shutterstock_132341783.jpg"/></div>
+                                    <div><img width="300px" height="150px" src="https://zagomattia.it/wp-content/uploads/2015/02/software.jpg"/></div>
+                                    <div><img width="300px" height="150px" src="http://freezeprosoftware.com/Images/News/software-development-24.jpg"/></div>
+                                    <div><img width="300px" height="150px" src="http://images.huffingtonpost.com/2015-07-10-1436489934-240856-FromPluto.jpg"/></div>
                                 </div>
                             </div>
                     );
@@ -220,6 +223,10 @@
             );
 
             $('#carousel').slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000
             });
         </script>
     </body>
