@@ -5,12 +5,11 @@
         <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
         <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
-
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>-->
+        <script src="https://unpkg.com/react@15.3.2/dist/react-with-addons.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./react-slick/slick.css" />
+        <link rel="stylesheet" type="text/css" href="./react-slick/slick-theme.css" />
+        <script type="text/javascript" src="./react-slick/react-slick.js"></script>
         <link rel="stylesheet" type="text/css" href="basic.css"/>
         <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css" />
 
@@ -20,52 +19,12 @@
         <div id='react-container'></div>
 
         <script type="text/babel">
-            $(document).ready(function(){
-                $('#carousel').slick({
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    autoplaySpeed: 2000,
-                });
-            });
 
             var { Router,
                     Route,
                     IndexRoute,
                     IndexLink,
                     Link } = ReactRouter;
-
-            /**
-             * Created by sam.alshyn on 10/27/16.
-             */
-
-                //Notice the space between require and the arguments.
-
-
-
-
-//            var SimpleSlider = React.createClass({
-//                render: function () {
-//                    var settings = {
-//                        dots: true,
-//                        infinite: true,
-//                        speed: 500,
-//                        slidesToShow: 1,
-//                        slidesToScroll: 1
-//                    };
-//                    return (
-//                            <Slider {...settings}>
-//                                <div><h3>1</h3></div>
-//                                <div><h3>2</h3></div>
-//                                <div><h3>3</h3></div>
-//                                <div><h3>4</h3></div>
-//                                <div><h3>5</h3></div>
-//                                <div><h3>6</h3></div>
-//                            </Slider>
-//                    );
-//                }
-//            });
-
 
             var Note = React.createClass({
                 getInitialState() {
@@ -179,19 +138,30 @@
 
             var Home = React.createClass({
                 render: function() {
+                    var settings = {
+                        dots: true,
+                        infinite: true,
+                        speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        autoplay: true
+                    };
                     return (
                             <div>
-                                <center><h2>WHY PAGEFOSSIL?</h2></center>
-                                <p>In our market buyers and suppliers collaborate on early cash flow at a rate that’s profitable for both. Buyers simply upload their approved invoices into the market and establish their target return and cash available. Suppliers request early payment of their approved invoices at a rate that works for them. The proprietary C2FO market algorithms route and match the orders. It’s that simple.</p>
+                                <div>
+                                    <center><h2>WHY PAGEFOSSIL?</h2></center>
+                                    <p>In our market buyers and suppliers collaborate on early cash flow at a rate that’s profitable for both. Buyers simply upload their approved invoices into the market and establish their target return and cash available. Suppliers request early payment of their approved invoices at a rate that works for them. The proprietary C2FO market algorithms route and match the orders. It’s that simple.</p>
 
-                                <p>Everyone knows that efficient markets are good for business. There are markets for stocks, bonds, commodities and now working capital. It’s about time. Welcome to C2FO.</p>
+                                    <p>Everyone knows that efficient markets are good for business. There are markets for stocks, bonds, commodities and now working capital. It’s about time. Welcome to C2FO.</p>
 
-
-                                <div id="carousel">
-                                    <div><img width="300px" height="150px" src="http://www.paceblade.com/wp-content/gallery/software/shutterstock_132341783.jpg"/></div>
-                                    <div><img width="300px" height="150px" src="https://zagomattia.it/wp-content/uploads/2015/02/software.jpg"/></div>
-                                    <div><img width="300px" height="150px" src="http://freezeprosoftware.com/Images/News/software-development-24.jpg"/></div>
-                                    <div><img width="300px" height="150px" src="http://images.huffingtonpost.com/2015-07-10-1436489934-240856-FromPluto.jpg"/></div>
+                                </div>
+                                <div className='container'>
+                                    <Slider {...settings}>
+                                        <div><img width="100%" height="100%" src="http://lorempixel.com/1600/800/"/></div>
+                                        <div><img width="100%" height="100%" src="http://lorempixel.com/800/400/"/></div>
+                                        <div><img width="100%" height="100%" src="http://lorempixel.com/1000/500/"/></div>
+                                        <div><img width="100%" height="100%" src="http://lorempixel.com/1200/600/"/></div>
+                                    </Slider>
                                 </div>
                             </div>
                     );
