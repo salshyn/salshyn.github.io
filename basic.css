@@ -62,7 +62,7 @@ div.note > textarea {
 }
 
 body {
-  background-color: #FFCC00;
+  background-color: #D8D4D4;
   padding: 20px;
   margin: 0;
 }
@@ -106,7 +106,7 @@ ul.header li a {
 
 #footer {
   height: 200px;
-  background-color: darkseagreen;
+  background-color: #B9B5B5;
   position: relative;
 }
 
