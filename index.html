@@ -20,11 +20,7 @@
 
         <script type="text/babel">
 
-            var { Router,
-                    Route,
-                    IndexRoute,
-                    IndexLink,
-                    Link } = ReactRouter;
+            var { Router, Route, IndexRoute, IndexLink, Link } = ReactRouter;
 
             var Note = React.createClass({
                 getInitialState() {
@@ -82,9 +78,7 @@
                     return {
                         notes: [
                             {id: 0, note: 'Microsoft'},
-                            {id: 1, note: 'Google'},
-                            {id: 2, note: 'Amazon'},
-                            {id: 3, note: 'The Beatles'}
+                            {id: 1, note: 'Google'}
                         ]
                     }
                 },
@@ -119,10 +113,47 @@
             });
 
             var App = React.createClass({
-                setSearchToInput: function() {
-                    alert('test');
+                getInitialState() {
+                    return {search: false}
                 },
-                render: function() {
+                search: function(e) {
+                    if (e.key === 'Enter') {
+                        console.log(e);
+                        alert("You entered: " + e.target.value)
+                        this.setState({search: false})
+                    }
+                },
+                setSearchToInput: function() {
+                    console.log('to input');
+                    this.setState({search: true})
+                },
+                setSearchToIcon: function() {
+                    console.log('to icon');
+                    this.setState({search: false})
+                },
+                render: function () {
+                    return (this.state.search) ? this.renderSearch() : this.renderIcon()
+                },
+                renderSearch: function() {
+                    return (
+                            <div>
+                                <h1><center>PageFossil</center></h1>
+                                <ul className="header">
+                                    <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+                                    <li><a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Try PageFossil Now!</a></li>
+                                    <li><Link to="/docs" activeClassName="active">Docs</Link></li>
+                                    <li><Link to="/faq" activeClassName="active">FAQ</Link></li>
+                                    <li><Link to="/contact" activeClassName="active">Contact</Link></li>
+                                    <li><Link to="/board" activeClassName="active">Board</Link></li>
+                                    <li><input type="text" value={this.state.value} onKeyPress={this.search}/></li>
+                                </ul>
+                                <div className="content">
+                                    {this.props.children}
+                                </div>
+                            </div>
+                    )
+                },
+                renderIcon: function() {
                     return (
                             <div>
                                 <h1><center>PageFossil</center></h1>
@@ -179,7 +210,9 @@
                 render: function() {
                     return (
                         <div>
-
+                            <p>Contact us</p>
+                            <p>Address: 506 N 2nd Ave #1407, Seattle, WA 98104</p>
+                            <p>Phone: 650-293-7735</p>
 
                         </div>
                     );
