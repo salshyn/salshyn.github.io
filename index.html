@@ -6,16 +6,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
         <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
 
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="basic.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+        <link rel="stylesheet" type="text/css" href="basic.css"/>
+        <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css" />
+
         <title>PageFossil</title>
     </head>
     <body>
         <div id='react-container'></div>
-        <div id="faq">© 2016 Pollen, Inc. All rights reserved / Patents pending</div>
 
         <script type="text/babel">
 
@@ -28,6 +30,36 @@
             /**
              * Created by sam.alshyn on 10/27/16.
              */
+
+            define(function (require) {
+                //Notice the space between require and the arguments.
+                var Slider = require ('slick');
+            });
+
+
+            var SimpleSlider = React.createClass({
+                render: function () {
+                    var settings = {
+                        dots: true,
+                        infinite: true,
+                        speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    };
+                    return (
+                            <Slider {...settings}>
+                                <div><h3>1</h3></div>
+                                <div><h3>2</h3></div>
+                                <div><h3>3</h3></div>
+                                <div><h3>4</h3></div>
+                                <div><h3>5</h3></div>
+                                <div><h3>6</h3></div>
+                            </Slider>
+                    );
+                }
+            });
+
+
             var Note = React.createClass({
                 getInitialState() {
                     return {editing: false}
@@ -209,25 +241,67 @@
                 }
             });
 
+            var Trynow = React.createClass({
+                goHome: function() {
+                    alert('Go Home');
+                },
+                tryNow: function() {
+                  alert('Try PageFossil Now');
+                },
+                faq: function() {
+                    alert('FAQ');
+                },
+                guides: function() {
+                    alert('Guides');
+                },
+                setSearchToInput: function() {
+                    console.log(this);
+                },
+                render: function() {
+                    return (
+                                <div id="header">
+                                    <a onClick={this.goHome}>&nbsp;&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <a onClick={this.tryNow}>&nbsp;&nbsp;&nbsp;&nbsp;Try PageFossil now!&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <a onClick={this.guides}>&nbsp;&nbsp;&nbsp;&nbsp;Guides&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <a onClick={this.faq}>&nbsp;&nbsp;&nbsp;&nbsp;FAQ&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <a onClick={this.setSearchToInput}>&nbsp;&nbsp;&nbsp;&nbsp;<i className="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                </div>
+
+                    );
+                }
+            });
+
+            var Footer = React.createClass({
+                render: function() {
+                    return (
+                            <div>
+                                <div id="footer">
+                                    <p id="trademark">© 2016 Pollen, Inc. All rights reserved / Patents pending</p>
+                                </div>
+                            </div>
+
+                    );
+                }
+            });
+
             ReactDOM.render(
-                <Router>
-                    <Route path="/" component={App}>
-                        <IndexRoute component={Home} />
-                        <Route path="stuff" component={Board}>
-                            <Route path="blah" component={MyBlah}/>
-                        </Route>
-                        <Route path="contact" component={Contact} />
-                    </Route>
-                </Router>,
+                    <div>
+                        <Trynow/>
+                        <Router>
+                            <Route path="/" component={App}>
+                                <IndexRoute component={Home} />
+                                <Route path="stuff" component={Board}>
+                                    <Route path="blah" component={MyBlah}/>
+                                </Route>
+                                <Route path="contact" component={Contact} />
+                            </Route>
+                        </Router>
+                        <Footer/>
+                    </div>
+                ,
                 document.getElementById('react-container')
             );
 
-            $('#carousel').slick({
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 2000
-            });
         </script>
     </body>
 </html>
