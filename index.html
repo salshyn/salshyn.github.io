@@ -6,11 +6,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
         <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
 
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
         <link rel="stylesheet" type="text/css" href="basic.css"/>
         <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css" />
 
@@ -20,6 +20,14 @@
         <div id='react-container'></div>
 
         <script type="text/babel">
+            $(document).ready(function(){
+                $('#carousel').slick({
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                });
+            });
 
             var { Router,
                     Route,
@@ -31,33 +39,32 @@
              * Created by sam.alshyn on 10/27/16.
              */
 
-            define(function (require) {
                 //Notice the space between require and the arguments.
-                var Slider = require ('slick');
-            });
 
 
-            var SimpleSlider = React.createClass({
-                render: function () {
-                    var settings = {
-                        dots: true,
-                        infinite: true,
-                        speed: 500,
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    };
-                    return (
-                            <Slider {...settings}>
-                                <div><h3>1</h3></div>
-                                <div><h3>2</h3></div>
-                                <div><h3>3</h3></div>
-                                <div><h3>4</h3></div>
-                                <div><h3>5</h3></div>
-                                <div><h3>6</h3></div>
-                            </Slider>
-                    );
-                }
-            });
+
+
+//            var SimpleSlider = React.createClass({
+//                render: function () {
+//                    var settings = {
+//                        dots: true,
+//                        infinite: true,
+//                        speed: 500,
+//                        slidesToShow: 1,
+//                        slidesToScroll: 1
+//                    };
+//                    return (
+//                            <Slider {...settings}>
+//                                <div><h3>1</h3></div>
+//                                <div><h3>2</h3></div>
+//                                <div><h3>3</h3></div>
+//                                <div><h3>4</h3></div>
+//                                <div><h3>5</h3></div>
+//                                <div><h3>6</h3></div>
+//                            </Slider>
+//                    );
+//                }
+//            });
 
 
             var Note = React.createClass({
