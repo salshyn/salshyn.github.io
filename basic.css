@@ -128,3 +128,8 @@ a:hover {
   font-family: sans-serif;
 }
 
+.commands {
+  padding-left:5em;
+  font-family: "Courier New";
+}
+

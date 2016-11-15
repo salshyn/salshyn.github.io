@@ -1,280 +1,294 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
-        <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-        <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
-        <script src="https://unpkg.com/react@15.3.2/dist/react-with-addons.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-        <link rel="stylesheet" type="text/css" href="./react-slick/slick.css" />
-        <link rel="stylesheet" type="text/css" href="./react-slick/slick-theme.css" />
-        <script type="text/javascript" src="./react-slick/react-slick.js"></script>
-        <link rel="stylesheet" type="text/css" href="basic.css"/>
-        <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css" />
+<head>
+    <script src="https://unpkg.com/react@15.2.1/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
+    <script src="https://unpkg.com/react@15.3.2/dist/react-with-addons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="./react-slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="./react-slick/slick-theme.css"/>
+    <script type="text/javascript" src="./react-slick/react-slick.js"></script>
+    <link rel="stylesheet" type="text/css" href="basic.css"/>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet/less" type="text/css" href="basic.less" />
 
-        <title>PageFossil</title>
-    </head>
-    <body>
-        <div id='react-container'></div>
+    <title>PageFossil</title>
+</head>
+<body>
+<div id='react-container'></div>
 
-        <script type="text/babel">
+<script type="text/babel">
 
-            var { Router, Route, IndexRoute, IndexLink, Link } = ReactRouter;
+    var {Router, Route, IndexRoute, IndexLink, Link} = ReactRouter;
 
-            var Note = React.createClass({
-                getInitialState() {
-                    return {editing: false}
-                },
-                edit() {
-                    this.setState({editing: true})
-                },
-                save() {
-                    this.props.onChange(this.refs.newText.value, this.props.id);
-                    this.setState({editing: false})
-                },
-                remove() {
-                    this.props.onRemove(this.props.id)
-                },
-                renderForm() {
-                    return (
-                            <div className="note">
-                                <textarea ref="newText"></textarea>
-                                <button onClick={this.save}>SAVE</button>
-                            </div>
-                    )
-                },
-                renderDisplay() {
-                    return (
-                            <div className="note">
-                                <p>{this.props.children}</p>
-                                <span>
-                          <button onClick={this.edit}>EDIT</button>
-                          <button onClick={this.remove}>X</button>
-                        </span>
-                            </div>
-                    )
-                },
-                render() {
-                    return (this.state.editing) ? this.renderForm()
-                            : this.renderDisplay()
+    class Board extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {number: ''};
+            this.handleChange = this.handleChange.bind(this);
+        }
 
-                }
-            });
+        handleChange() {
+            this.setState({number: this.textInput.value * 1.8 + 32})
+        }
 
-            var Board = React.createClass({
-                propTypes: {
-                    count: function(props, propName) {
-                        if(typeof props[propName] !== "number") {
-                            return new Error("the count must be a number")
-                        }
-
-                        if(props[propName] > 100) {
-                            return new Error('Creating ' + props[propName] + ' notes is ridiculous')
-                        }
-                    }
-                },
-                getInitialState() {
-                    return {
-                        notes: [
-                            {id: 0, note: 'Microsoft'},
-                            {id: 1, note: 'Google'}
-                        ]
-                    }
-                },
-                update(newText, id) {
-                    var notes = this.state.notes.map(
-                            note => (note.id !== id) ?
-                                    note :
-                            {
-                                ...note,
-                                note: newText
-                            }
-                    );
-                    this.setState({notes})
-                },
-                remove(id) {
-                    var notes = this.state.notes.filter(note => note.id !== id)
-                    this.setState({notes})
-                },
-                eachNote(note) {
-                    return (<Note key={note.id}
-                                  id={note.id}
-                                  onChange={this.update}
-                                  onRemove={this.remove}>
-                        {note.note}
-                    </Note>)
-                },
-                render() {
-                    return (<div className='board'>
-                        {this.state.notes.map(this.eachNote)}
-                    </div>)
-                }
-            });
-
-            var App = React.createClass({
-                getInitialState() {
-                    return {search: false}
-                },
-                search: function(e) {
-                    if (e.key === 'Enter') {
-                        console.log(e);
-                        alert("You entered: " + e.target.value)
-                        this.setState({search: false})
-                    }
-                },
-                setSearchToInput: function() {
-                    console.log('to input');
-                    this.setState({search: true})
-                },
-                setSearchToIcon: function() {
-                    console.log('to icon');
-                    this.setState({search: false})
-                },
-                render: function () {
-                    return (this.state.search) ? this.renderSearch() : this.renderIcon()
-                },
-                renderSearch: function() {
-                    return (
-                            <div>
-                                <h1><center>PageFossil</center></h1>
-                                <ul className="header">
-                                    <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                                    <li><a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Try PageFossil Now!</a></li>
-                                    <li><Link to="/docs" activeClassName="active">Docs</Link></li>
-                                    <li><Link to="/faq" activeClassName="active">FAQ</Link></li>
-                                    <li><Link to="/contact" activeClassName="active">Contact</Link></li>
-                                    <li><Link to="/board" activeClassName="active">Board</Link></li>
-                                    <li><input type="text" value={this.state.value} onKeyPress={this.search}/></li>
-                                </ul>
-                                <div className="content">
-                                    {this.props.children}
-                                </div>
-                            </div>
-                    )
-                },
-                renderIcon: function() {
-                    return (
-                            <div>
-                                <h1><center>PageFossil</center></h1>
-                                <ul className="header">
-                                    <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                                    <li><a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Try PageFossil Now!</a></li>
-                                    <li><Link to="/docs" activeClassName="active">Docs</Link></li>
-                                    <li><Link to="/faq" activeClassName="active">FAQ</Link></li>
-                                    <li><Link to="/contact" activeClassName="active">Contact</Link></li>
-                                    <li><Link to="/board" activeClassName="active">Board</Link></li>
-                                    <li><a onClick={this.setSearchToInput}><i className="fa fa-search" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <div className="content">
-                                    {this.props.children}
-                                </div>
-                            </div>
-                    )
-                }
-            });
-
-            var Home = React.createClass({
-                render: function() {
-                    var settings = {
-                        dots: true,
-                        infinite: true,
-                        speed: 500,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        autoplay: true
-                    };
-                    return (
-                            <div>
-                                <div>
-                                    <center><h2>WHY PAGEFOSSIL?</h2></center>
-                                    <p>In our market buyers and suppliers collaborate on early cash flow at a rate that’s profitable for both. Buyers simply upload their approved invoices into the market and establish their target return and cash available. Suppliers request early payment of their approved invoices at a rate that works for them. The proprietary C2FO market algorithms route and match the orders. It’s that simple.</p>
-
-                                    <p>Everyone knows that efficient markets are good for business. There are markets for stocks, bonds, commodities and now working capital. It’s about time. Welcome to C2FO.</p>
-
-                                </div>
-                                <div className='container'>
-                                    <Slider {...settings}>
-                                        <div><img width="100%" height="100%" src="http://lorempixel.com/1600/400/"/></div>
-                                        <div><img width="100%" height="100%" src="http://lorempixel.com/800/200/"/></div>
-                                        <div><img width="100%" height="100%" src="http://lorempixel.com/1000/250/"/></div>
-                                        <div><img width="100%" height="100%" src="http://lorempixel.com/1200/300/"/></div>
-                                    </Slider>
-                                </div>
-                            </div>
-                    );
-                }
-            });
-
-            var Contact = React.createClass({
-                render: function() {
-                    return (
-                        <div>
-                            <p>Contact us</p>
-                            <p>Address: 506 N 2nd Ave #1407, Seattle, WA 98104</p>
-                            <p>Phone: 650-293-7735</p>
-
-                        </div>
-                    );
-                }
-            });
-
-            var Docs = React.createClass({
-                render: function() {
-                    return (
-                        <div>
-                            <h2>PageFossil Documentation</h2>
-                            <p>More to come soon!</p>
-                        </div>
-                    );
-                }
-            });
-
-            var Faq = React.createClass({
-                render: function() {
-                    return (
-                            <div>
-                                <h2>PageFossil FAQ</h2>
-                                <h4>General</h4>
-                                <p></p>What is PageFossil?
-                                <p></p>What is PageFossil’s Mission?
-                                <p></p>What does PageFossil provide?
-                                <p></p>What does this mean for users?
-                                <p></p>Who is funding PageFossil?
-                                <p></p>Who is building PageFossil?
-                            </div>
-                    );
-                }
-            });
-
-            var Footer = React.createClass({
-                render: function() {
-                    return (
-                            <div>
-                                <div id="footer">
-                                    <p id="trademark">© 2016 Pollen, Inc. All rights reserved / Patents pending</p>
-                                </div>
-                            </div>
-                    );
-                }
-            });
-
-            ReactDOM.render(
+        render() {
+            return (
                     <div>
-                        <Router>
-                            <Route path="/" component={App}>
-                                <IndexRoute component={Home} />
-                                <Route path="docs" component={Docs}/>
-                                <Route path="faq" component={Faq}/>
-                                <Route path="contact" component={Contact}/>
-                                <Route path="board" component={Board}/>
-                            </Route>
-                        </Router>
-                        <Footer/>
+                        <h1>Hello, world!</h1>
+                        <input
+                                type="text"
+                                ref={(input) => this.textInput = input} onChange={this.handleChange}
+                                placeholder="Enter in Celsius"
+                        />
+                        <h2>This is {this.state.number} in Fahrenheit</h2>
                     </div>
-                ,
-                document.getElementById('react-container')
             );
-        </script>
-    </body>
+        }
+    }
+
+    var App = React.createClass({
+        getInitialState() {
+            return {search: false}
+        },
+        search: function (e) {
+            if (e.key === 'Enter') {
+                alert("You entered: " + e.target.value);
+                this.setState({search: false})
+            }
+        },
+        setSearchToInput: function () {
+            this.setState({search: true})
+        },
+        setSearchToIcon: function () {
+            this.setState({search: false})
+        },
+        render: function () {
+            return (this.state.search) ? this.renderSearch() : this.renderIcon()
+        },
+        renderSearch: function () {
+            return (
+                    <div>
+                        <h1>
+                            <center>PageFossil</center>
+                        </h1>
+                        <ul className="header">
+                            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+                            <li>
+                                <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Try
+                                    PageFossil Now!</a></li>
+                            <li><Link to="/gdrive" activeClassName="active">Installation</Link></li>
+                            <li><Link to="/faq" activeClassName="active">FAQ</Link></li>
+                            <li><Link to="/contact" activeClassName="active">Contact</Link></li>
+                            <li><Link to="/board" activeClassName="active">Board</Link></li>
+                            <li><input placeholder="Type and press Enter" type="text" value={this.state.value}
+                                       onKeyPress={this.search}/></li>
+                        </ul>
+                        <div className="content">
+                            {this.props.children}
+                        </div>
+                    </div>
+            )
+        },
+        renderIcon: function () {
+            return (
+                    <div>
+                        <h1>
+                            <center>PageFossil</center>
+                        </h1>
+                        <ul className="header">
+                            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+                            <li>
+                                <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Try
+                                    PageFossil Now!</a></li>
+                            <li><Link to="/gdrive" activeClassName="active">Installation</Link></li>
+                            <li><Link to="/faq" activeClassName="active">FAQ</Link></li>
+                            <li><Link to="/contact" activeClassName="active">Contact</Link></li>
+                            <li><Link to="/board" activeClassName="active">Board</Link></li>
+                            <li><a onClick={this.setSearchToInput}><i className="fa fa-search"
+                                                                      aria-hidden="true"></i></a></li>
+                        </ul>
+                        <div className="content">
+                            {this.props.children}
+                        </div>
+                    </div>
+            )
+        }
+    });
+
+    var Home = React.createClass({
+        render: function () {
+            var settings = {
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true
+            };
+            return (
+                    <div>
+                        <div>
+                            <center><h2>WHY PAGEFOSSIL?</h2></center>
+                            <p>In our market buyers and suppliers collaborate on early cash flow at a rate that’s
+                                profitable for both. Buyers simply upload their approved invoices into the market and
+                                establish their target return and cash available. Suppliers request early payment of
+                                their approved invoices at a rate that works for them. The proprietary C2FO market
+                                algorithms route and match the orders. It’s that simple.</p>
+
+                            <p>Everyone knows that efficient markets are good for business. There are markets for
+                                stocks, bonds, commodities and now working capital. It’s about time. Welcome to
+                                C2FO.</p>
+
+                        </div>
+                        <div className='container'>
+                            <Slider {...settings}>
+                                <div><img width="100%" height="100%" src="http://lorempixel.com/1600/400/"/></div>
+                                <div><img width="100%" height="100%" src="http://lorempixel.com/800/200/"/></div>
+                                <div><img width="100%" height="100%" src="http://lorempixel.com/1000/250/"/></div>
+                                <div><img width="100%" height="100%" src="http://lorempixel.com/1200/300/"/></div>
+                            </Slider>
+                        </div>
+                    </div>
+            );
+        }
+    });
+
+    class Contact extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <p>Contact us</p>
+                        <p>Address: 506 N 2nd Ave #1407, Seattle, WA 98104</p>
+                        <p>Phone: 650-293-7735</p>
+
+                    </div>
+            );
+        }
+    }
+
+    class Gdrive extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        getDate() {
+            return (
+                    <div>test</div>
+            )
+        }
+        render() {
+            return (
+                    <div>
+                        <h2>Installation</h2>
+                        <h3>1. Download and Install Google Drive</h3>
+                        <p>Go to <a href="https://www.google.com/drive/download/">this link</a> and follow directions to install Google Drive.</p>
+                        <p>After installation the look should be similar to following:</p>
+                        <img width="450" height="300" src="./images/gdriveinstall1.png" />
+
+                        <h3>2. Run following commands in Terminal:</h3>
+                        <p>Go to Google Drive folder </p>
+                        <span className="commands">cd ~/Google\ Drive</span>
+
+                        <p>and create <i>/pagefossil</i> folder:</p>
+                        <span className="commands">mkdir -p pagefossil</span>
+
+                        <p>remove <i>/pagefossil</i> in Downloads folder:</p>
+                        <span className="commands">rm -rf ~/Downloads/pagefossil</span>
+
+                        <p>go to <i>/Downloads</i>:</p>
+                        <span className="commands">cd ~/Downloads/</span>
+
+                        <p>create a symbolic link:</p>
+                        <span className="commands">ln -s ~/Google\ Drive/pagefossil/ .</span>
+
+                        <h3>Now files will get saved to <i>pagefossil</i> folder in Google Drive</h3>
+
+
+
+                    </div>
+            );
+        }
+    }
+
+    class Faq extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <h2>PageFossil FAQ</h2>
+                        <h4>General</h4>
+                        <p></p>What is PageFossil?
+                        <p></p>What is PageFossil’s Mission?
+                        <p></p>What does PageFossil provide?
+                        <p></p>What does this mean for users?
+                        <p></p>Who is funding PageFossil?
+                        <p></p>Who is building PageFossil?
+                    </div>
+            );
+        }
+    }
+
+    class Footer extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <div id="footer">
+                            <p id="trademark">© 2016 Pollen, Inc. All rights reserved / Patents pending</p>
+                        </div>
+                    </div>
+            );
+        }
+    }
+
+    const element = <h1>Hello Sam</h1>;
+
+
+    var NavMenu = React.createClass({
+
+        render: function()
+        {
+
+                return (
+                        <div className="dropdown">
+                            <ul>
+                                <li><Link to="/gInstall" activeClassName="active">Google Drive</Link></li>
+                                <li><Link to="/dropbox" activeClassName="active">Dropbox</Link></li>
+                                <li><Link to="/keybase" activeClassName="active">Keybase</Link></li>
+                                <li><Link to="/local" activeClassName="active">Local</Link></li>
+                            </ul>
+                        </div>
+                );
+
+        }
+    });
+
+    ReactDOM.render(
+            <div>
+                <Router>
+                    <Route path="/" component={App}>
+                        <IndexRoute component={Home}/>
+                        <Route path="gdrive" component={NavMenu}/>
+                        <Route path="gInstall" component={Gdrive}/>
+                        <Route path="faq" component={Faq}/>
+                        <Route path="contact" component={Contact}/>
+                        <Route path="board" component={Board}/>
+                    </Route>
+                </Router>
+                <Footer/>
+            </div>
+            ,
+            document.getElementById('react-container')
+    );
+</script>
+</body>
 </html>
