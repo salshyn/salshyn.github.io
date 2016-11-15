@@ -215,6 +215,49 @@
         }
     }
 
+    class Dropbox extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        getDate() {
+            return (
+                    <div>test</div>
+            )
+        }
+        render() {
+            return (
+                    <div>
+                        <h2>Installation</h2>
+                        <h3>1. Download and Install Dropbox</h3>
+                        <p>Go to <a href="https://www.google.com/drive/download/">this link</a> and follow directions to install Google Drive.</p>
+                        <p>After installation the look should be similar to following:</p>
+                        <img width="450" height="300" src="./images/gdriveinstall1.png" />
+
+                        <h3>2. Run following commands in Terminal:</h3>
+                        <p>Go to Google Drive folder </p>
+                        <span className="commands">cd ~/Google\ Drive</span>
+
+                        <p>and create <i>/pagefossil</i> folder:</p>
+                        <span className="commands">mkdir -p pagefossil</span>
+
+                        <p>remove <i>/pagefossil</i> in Downloads folder:</p>
+                        <span className="commands">rm -rf ~/Downloads/pagefossil</span>
+
+                        <p>go to <i>/Downloads</i>:</p>
+                        <span className="commands">cd ~/Downloads/</span>
+
+                        <p>create a symbolic link:</p>
+                        <span className="commands">ln -s ~/Google\ Drive/pagefossil/ .</span>
+
+                        <h3>Now files will get saved to <i>pagefossil</i> folder in Google Drive</h3>
+
+
+
+                    </div>
+            );
+        }
+    }
+
     class Faq extends React.Component {
         constructor(props) {
             super(props);
@@ -279,6 +322,7 @@
                         <IndexRoute component={Home}/>
                         <Route path="gdrive" component={NavMenu}/>
                         <Route path="gInstall" component={Gdrive}/>
+                        <Route path="dropbox" component={Dropbox}/>
                         <Route path="faq" component={Faq}/>
                         <Route path="contact" component={Contact}/>
                         <Route path="board" component={Board}/>
