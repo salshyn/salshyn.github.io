@@ -26,12 +26,12 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
-              <caret line="139" column="81" selection-start-line="139" selection-start-column="81" selection-end-line="139" selection-end-column="81" />
+            <state relative-caret-position="541">
+              <caret line="98" column="55" selection-start-line="98" selection-start-column="55" selection-end-line="98" selection-end-column="55" />
               <folding>
                 <element signature="e#1180#2001#0" expanded="false" />
-                <marker date="1479249969000" expanded="false" signature="11381:12012" ph="{...}" />
-                <marker date="1479249969000" expanded="false" signature="12055:12426" ph="{...}" />
+                <marker date="1479250293000" expanded="false" signature="11447:12078" ph="{...}" />
+                <marker date="1479250293000" expanded="false" signature="12121:12492" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -183,6 +183,20 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="salshyn.github.io" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="salshyn.github.io" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="font-awesome-4.7.0" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -295,12 +309,12 @@
       <option name="presentableId" value="Default" />
       <updated>1477610485251</updated>
       <workItem from="1477611550453" duration="620000" />
-      <workItem from="1478558891045" duration="33988000" />
+      <workItem from="1478558891045" duration="34212000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34608000" />
+    <option name="totallyTimeSpent" value="34832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1395" y="-367" width="1381" height="1417" extended-state="0" />
@@ -356,8 +370,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#1180#2001#0" expanded="false" />
-            <marker date="1479249969000" expanded="false" signature="11381:12012" ph="{...}" />
-            <marker date="1479249969000" expanded="false" signature="12055:12426" ph="{...}" />
+            <marker date="1479250293000" expanded="false" signature="11447:12078" ph="{...}" />
+            <marker date="1479250293000" expanded="false" signature="12121:12492" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -368,8 +382,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#1180#2001#0" expanded="false" />
-            <marker date="1479249969000" expanded="false" signature="11381:12012" ph="{...}" />
-            <marker date="1479249969000" expanded="false" signature="12055:12426" ph="{...}" />
+            <marker date="1479250293000" expanded="false" signature="11447:12078" ph="{...}" />
+            <marker date="1479250293000" expanded="false" signature="12121:12492" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -381,8 +395,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#1180#2001#0" expanded="false" />
-            <marker date="1479249969000" expanded="false" signature="11381:12012" ph="{...}" />
-            <marker date="1479249969000" expanded="false" signature="12055:12426" ph="{...}" />
+            <marker date="1479250293000" expanded="false" signature="11447:12078" ph="{...}" />
+            <marker date="1479250293000" expanded="false" signature="12121:12492" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -456,12 +470,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="139" column="81" selection-start-line="139" selection-start-column="81" selection-end-line="139" selection-end-column="81" />
+        <state relative-caret-position="541">
+          <caret line="98" column="55" selection-start-line="98" selection-start-column="55" selection-end-line="98" selection-end-column="55" />
           <folding>
             <element signature="e#1180#2001#0" expanded="false" />
-            <marker date="1479249969000" expanded="false" signature="11381:12012" ph="{...}" />
-            <marker date="1479249969000" expanded="false" signature="12055:12426" ph="{...}" />
+            <marker date="1479250293000" expanded="false" signature="11447:12078" ph="{...}" />
+            <marker date="1479250293000" expanded="false" signature="12121:12492" ph="{...}" />
           </folding>
         </state>
       </provider>
