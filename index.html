@@ -167,12 +167,29 @@
         render() {
             return (
                     <div>
-                        <p>Contact us</p>
-                        <p>Address: 506 N 2nd Ave #1407, Seattle, WA 98104</p>
-                        <p>Phone: 650-293-7735</p>
+                        <div id="left">
+
+                        </div>
+                        <div id="right">
+
+                        </div>
 
                     </div>
             );
+        }
+    }
+
+    class Contents extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+
+        render() {
+            return (
+                    <div>
+                        <p>test</p>
+                    </div>
+            )
         }
     }
 
@@ -297,27 +314,22 @@
         }
     }
 
-    const element = <h1>Hello Sam</h1>;
-
-
-    var NavMenu = React.createClass({
-
-        render: function()
-        {
-
-                return (
-                        <div className="dropdown">
-                            <ul>
-                                <li><Link to="/gInstall" activeClassName="active">Google Drive</Link></li>
-                                <li><Link to="/dropbox" activeClassName="active">Dropbox</Link></li>
-                                <li><Link to="/keybase" activeClassName="active">Keybase</Link></li>
-                                <li><Link to="/local" activeClassName="active">Local</Link></li>
-                            </ul>
-                        </div>
-                );
+    class NavMenu extends React.Component {
+        render() {
+            return (
+                    <div className="dropdown">
+                        <ul>
+                            <p>To install, go to </p>
+                            <li><Link to="/gInstall" activeClassName="active">Google Drive</Link></li>
+                            <li><Link to="/dropbox" activeClassName="active">Dropbox</Link></li>
+                            <li><Link to="/keybase" activeClassName="active">Keybase</Link></li>
+                            <li><Link to="/local" activeClassName="active">Local</Link></li>
+                        </ul>
+                    </div>
+            );
 
         }
-    });
+    }
 
     ReactDOM.render(
             <div>

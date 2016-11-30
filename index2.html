@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@15.2.1/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
+    <script src="https://unpkg.com/react@15.3.2/dist/react-with-addons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="./dataFile.js"></script>
+    <link rel="stylesheet" type="text/css" href="./react-slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="./react-slick/slick-theme.css"/>
+    <script type="text/javascript" src="./react-slick/react-slick.js"></script>
+    <link rel="stylesheet" type="text/css" href="basic.css"/>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet/less" type="text/css" href="basic.less" />
+    <title>PageFossil</title>
+</head>
+<body>
+<iframe src="https://www.giphy.com/embed/2nGfl4QfpCtW" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/cheezburger-slapping-funny-2nGfl4QfpCtW">via GIPHY</a></p>
+
+<div id="wrapper"></div>
+
+<script type="text/babel">
+
+    var {Router, Route, IndexRoute, IndexLink, Link} = ReactRouter;
+
+    class Contents extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {text: <Readme/>};
+            this.select = this.select.bind(this)
+        }
+        select(e) {
+            var option = e.target.innerText;
+
+            if (option === 'Read Me') {
+                this.setState({text: <Readme/>})
+            } else if (option === 'Introduction') {
+                this.setState({text: <Introduction/>})
+            } else if (option === 'Installation') {
+                this.setState({text: <Installation/>})
+            } else if (option === 'Keybase') {
+                this.setState({text: <Keybase/>})
+            } else if (option === 'Google Drive') {
+                this.setState({text: <Gdrive/>})
+            } else if (option === 'Dropbox') {
+                this.setState({text: <Dropbox/>})
+            } else if (option === 'IPFS') {
+                this.setState({text: <Ipfs/>})
+            } else if (option === 'FAQ') {
+                this.setState({text: <Faq/>})
+            }
+        }
+        render() {
+            return (
+                    <div>
+                        <div id="first">
+                            <a className="main" onClick={this.select}>Read Me</a>
+                            <a className="main" onClick={this.select}>Introduction</a>
+                            <a className="main" onClick={this.select}>Installation</a>
+                            <a className="mainInner" onClick={this.select}>Keybase</a>
+                            <a className="mainInner" onClick={this.select}>Google Drive</a>
+                            <a className="mainInner" onClick={this.select}>Dropbox</a>
+                            <a className="mainInner" onClick={this.select}>IPFS</a>
+                            <a className="main" onClick={this.select}>FAQ</a>
+                        </div>
+                        <div id="second">
+                            <p className="main">{this.state.text}</p>
+                        </div>
+                    </div>
+            )
+        }
+    }
+
+    class Readme extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <p>Eos diligenter recensenda religionis ubi sic advertatur. Habeantur sanguinem partiales medicinam
+                            cum sua cui. Pro gurgitem rom sed excitari possimus non. Ex virtutibus percepturi si complector
+                            aliquamdiu gi mo. Quaecunque nul verumtamen materialis hoc lor argumentum. Ita finitae hominem
+                            dei nam naturas. Vita pla fere luce adeo item eas. Cera illa atra ii cito et ad. Quiddam age sum
+                            nemoque impetus admodum. Si potuerit quidquid at impulsum im tenebras.</p>
+                    </div>
+            )
+        }
+    }
+
+    class Introduction extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <p>Nudam sexta hoc tes capax utile illis. Mo ad ut priusquam adjuvetis si consistit attigeram
+                            levitatem. Applicare existeret interitum nam suo mei cognoscam pertinere tot praefatio.
+                            Simili videam figere ea mentes ac in. </p>
+                    </div>
+            )
+        }
+    }
+
+    class Installation extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <ul>
+                            <li><Link to="/keybase" activeClassName="active">Keybase</Link></li>
+                            <li><Link to="/gdrive" activeClassName="active">Google Drive</Link></li>
+                            <li><Link to="/dropbox" activeClassName="active">Dropbox</Link></li>
+                            <li><Link to="/ipfs" activeClassName="active">IPFS</Link></li>
+                        </ul>
+                    </div>
+            )
+        }
+    }
+
+    class Keybase extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <p>Keybase</p>
+                    </div>
+            )
+        }
+    }
+
+    class Gdrive extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <h2>Installation</h2>
+                        <h3>1. Download and Install Google Drive</h3>
+                        <p>Go to <a href="https://www.google.com/drive/download/">this link</a> and follow directions to install Google Drive.</p>
+                        <p>After installation the look should be similar to following:</p>
+                        <img width="450" height="300" src="./images/gdriveinstall1.png" />
+
+                        <h3>2. Run following commands in Terminal:</h3>
+                        <p>Go to Google Drive folder </p>
+                        <span className="commands">cd ~/Google\ Drive</span>
+
+                        <p>and create <i>/pagefossil</i> folder:</p>
+                        <span className="commands">mkdir -p pagefossil</span>
+
+                        <p>remove <i>/pagefossil</i> in Downloads folder:</p>
+                        <span className="commands">rm -rf ~/Downloads/pagefossil</span>
+
+                        <p>go to <i>/Downloads</i>:</p>
+                        <span className="commands">cd ~/Downloads/</span>
+
+                        <p>create a symbolic link:</p>
+                        <span className="commands">ln -s ~/Google\ Drive/pagefossil/ .</span>
+
+                        <h3>Now files will get saved to <i>pagefossil</i> folder in Google Drive</h3>
+                    </div>
+            )
+        }
+    }
+
+    class Dropbox extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <h2>Installation</h2>
+                        <h3>1. Download and Install Dropbox</h3>
+                        <p>Go to <a href="https://www.dropbox.com/install">this link</a> and follow directions to install Dropbox.</p>
+                        <p>After installation the look should be similar to following:</p>
+                        <img width="450" height="300" src="./images/gdriveinstall1.png" />
+
+                        <h3>2. Run following commands in Terminal:</h3>
+                        <p>Go to Google Drive folder </p>
+                        <span className="commands">cd ~/Dropbox</span>
+
+                        <p>and create <i>/pagefossil</i> folder:</p>
+                        <span className="commands">mkdir -p pagefossil</span>
+
+                        <p>remove <i>/pagefossil</i> in Downloads folder:</p>
+                        <span className="commands">rm -rf ~/Downloads/pagefossil</span>
+
+                        <p>go to <i>/Downloads</i>:</p>
+                        <span className="commands">cd ~/Downloads/</span>
+
+                        <p>create a symbolic link:</p>
+                        <span className="commands">ln -s ~/Dropbox/pagefossil/ .</span>
+
+                        <h3>Now files will get saved to <i>pagefossil</i> folder in Dropbox</h3>
+
+
+
+                    </div>
+            )
+        }
+    }
+
+    class Ipfs extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <p>IPFS</p>
+                    </div>
+            )
+        }
+    }
+
+    class Faq extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <h2>PageFossil FAQ</h2>
+                        <h4>General</h4>
+                        <p></p>What is PageFossil?
+                        <p></p>What is PageFossil’s Mission?
+                        <p></p>What does PageFossil provide?
+                        <p></p>What does this mean for users?
+                        <p></p>Who is funding PageFossil?
+                        <p></p>Who is building PageFossil?
+                    </div>
+            );
+        }
+    }
+
+
+
+    ReactDOM.render(
+            <div>
+                <Router>
+                    <Route path="/" component={Contents}>
+                        <IndexRoute component={Readme}/>
+                        <Route path="keybase" component={Keybase}/>
+                        <Route path="gdrive" component={Gdrive}/>
+                        <Route path="dropbox" component={Dropbox}/>
+                        <Route path="ipfs" component={Ipfs}/>
+                        <Route path="faq" component={Faq}/>
+                    </Route>
+                </Router>
+            </div>
+            ,
+            document.getElementById('wrapper')
+    );
+</script>
+</body>
+</html>
