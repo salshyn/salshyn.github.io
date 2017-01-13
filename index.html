@@ -7,199 +7,130 @@
     <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
     <script src="https://unpkg.com/react@15.3.2/dist/react-with-addons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="./dataFile.js"></script>
     <link rel="stylesheet" type="text/css" href="./react-slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="./react-slick/slick-theme.css"/>
     <script type="text/javascript" src="./react-slick/react-slick.js"></script>
     <link rel="stylesheet" type="text/css" href="basic.css"/>
     <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet/less" type="text/css" href="basic.less" />
-
     <title>PageFossil</title>
 </head>
 <body>
-<div id='react-container'></div>
+<iframe src="https://www.giphy.com/embed/2nGfl4QfpCtW" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/cheezburger-slapping-funny-2nGfl4QfpCtW">via GIPHY</a></p>
+
+<div id="wrapper"></div>
 
 <script type="text/babel">
 
     var {Router, Route, IndexRoute, IndexLink, Link} = ReactRouter;
 
-    class Board extends React.Component {
-        constructor(props) {
-            super(props);
-            this.state = {number: ''};
-            this.handleChange = this.handleChange.bind(this);
-        }
-
-        handleChange() {
-            this.setState({number: this.textInput.value * 1.8 + 32})
-        }
-
-        render() {
-            return (
-                    <div>
-                        <h1>Hello, world!</h1>
-                        <input
-                                type="text"
-                                ref={(input) => this.textInput = input} onChange={this.handleChange}
-                                placeholder="Enter in Celsius"
-                        />
-                        <h2>This is {this.state.number} in Fahrenheit</h2>
-                    </div>
-            );
-        }
-    }
-
-    var App = React.createClass({
-        getInitialState() {
-            return {search: false}
-        },
-        search: function (e) {
-            if (e.key === 'Enter') {
-                alert("You entered: " + e.target.value);
-                this.setState({search: false})
-            }
-        },
-        setSearchToInput: function () {
-            this.setState({search: true})
-        },
-        setSearchToIcon: function () {
-            this.setState({search: false})
-        },
-        render: function () {
-            return (this.state.search) ? this.renderSearch() : this.renderIcon()
-        },
-        renderSearch: function () {
-            return (
-                    <div>
-                        <h1>
-                            <center>PageFossil</center>
-                        </h1>
-                        <ul className="header">
-                            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                            <li>
-                                <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Try
-                                    PageFossil Now!</a></li>
-                            <li><Link to="/gdrive" activeClassName="active">Installation</Link></li>
-                            <li><Link to="/faq" activeClassName="active">FAQ</Link></li>
-                            <li><Link to="/contact" activeClassName="active">Contact</Link></li>
-                            <li><Link to="/board" activeClassName="active">Board</Link></li>
-                            <li><input placeholder="Type and press Enter" type="text" value={this.state.value}
-                                       onKeyPress={this.search}/></li>
-                        </ul>
-                        <div className="content">
-                            {this.props.children}
-                        </div>
-                    </div>
-            )
-        },
-        renderIcon: function () {
-            return (
-                    <div>
-                        <h1>
-                            <center><img width="81.5625" height="100" src="./images/extinct-1296604_1280.png"/></center>
-                        </h1>
-
-                        <ul className="header">
-                            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                            <li>
-                                <a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en">Try
-                                    PageFossil Now!</a></li>
-                            <li><Link to="/gdrive" activeClassName="active">Installation</Link></li>
-                            <li><Link to="/faq" activeClassName="active">FAQ</Link></li>
-                            <li><Link to="/contact" activeClassName="active">Contact</Link></li>
-                            <li><Link to="/board" activeClassName="active">Board</Link></li>
-                            <li><a onClick={this.setSearchToInput}><i className="fa fa-search"
-                                                                      aria-hidden="true"></i></a></li>
-                        </ul>
-                        <div className="content">
-                            {this.props.children}
-                        </div>
-                    </div>
-            )
-        }
-    });
-
-    var Home = React.createClass({
-        render: function () {
-            var settings = {
-                dots: true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                autoplay: true
-            };
-            return (
-                    <div>
-                        <div>
-                            <center><h2>WHY PAGEFOSSIL?</h2></center>
-                            <p>Ero parentibus complector expectanti vos faciliorem conjunctam incrementi.
-                                Re magnum ac de nescio fallat pictas in. Competit co componat qualitas automata
-                                gi earumdem ea credendi. Quia ipsi nunc mo ei novi is ulla luce. Nec tum quies
-                                sanae opera has. Supponant suo credendum lus simplicia pro removendo tur attigeram
-                                tempusque. Vi sequentia to fidelibus ii mo delaberer. Apta ii ut dare at ad suam.
-                                Occurrebat affectibus cap ibi seu continetur.</p>
-                                <p>Pendeant existens refertur me to ob. Mutetur et is an ad petitis dicamne laborio.
-                                Dum cernitur eam cum contendo ita credenda. In potentiali tantummodo consumerem
-                                objectivam consuetudo at et. Referuntur manifestam respondere de is devenietur ne
-                                difficilia indubitati. Advenit propria imo saporem rom. </p>
-
-
-
-                        </div>
-                        <div className='container'>
-                            <Slider {...settings}>
-                                <div><img width="100%" height="100%" src="http://lorempixel.com/1600/400/"/></div>
-                                <div><img width="100%" height="100%" src="http://lorempixel.com/800/200/"/></div>
-                                <div><img width="100%" height="100%" src="http://lorempixel.com/1000/250/"/></div>
-                                <div><img width="100%" height="100%" src="http://lorempixel.com/1200/300/"/></div>
-                            </Slider>
-                        </div>
-                    </div>
-            );
-        }
-    });
-
-    class Contact extends React.Component {
-        constructor(props) {
-            super(props);
-        }
-        render() {
-            return (
-                    <div>
-                        <div id="left">
-
-                        </div>
-                        <div id="right">
-
-                        </div>
-                        <p>Contact us</p>
-                        <p>Address: 506 N 2nd Ave #1407, Seattle, WA 98104</p>
-                        <p>Phone: 650-293-7735</p>
-                        <p>Однажды, когне могу унести  с собой  свое
-тело. Оно очень тяжелое.
-     Я не ответил.
-     -- Оно  сделается похожим  на  старую сброшенную  оболочку.  Сброшенные
-оболочки не могут никого опечалить...
-     Я не ответил.
-     И ни одному взрослому не понять, что это -- вопрос огромной важности!
-
-
-
-                    </div>
-            );
-        }
-    }
-
     class Contents extends React.Component {
         constructor(props) {
             super(props);
+            this.state = {text: <Readme/>};
+            this.select = this.select.bind(this)
         }
+        select(e) {
+            var option = e.target.innerText;
 
+            if (option === 'Read Me') {
+                this.setState({text: <Readme/>})
+            } else if (option === 'Introduction') {
+                this.setState({text: <Introduction/>})
+            } else if (option === 'Installation') {
+                this.setState({text: <Installation/>})
+            } else if (option === 'Keybase') {
+                this.setState({text: <Keybase/>})
+            } else if (option === 'Google Drive') {
+                this.setState({text: <Gdrive/>})
+            } else if (option === 'Dropbox') {
+                this.setState({text: <Dropbox/>})
+            } else if (option === 'IPFS') {
+                this.setState({text: <Ipfs/>})
+            } else if (option === 'FAQ') {
+                this.setState({text: <Faq/>})
+            }
+        }
         render() {
             return (
                     <div>
-                        <p>test</p>
+                        <div id="first">
+                            <a className="main" onClick={this.select}>Read 1Me</a>
+                            <a className="main" onClick={this.select}>Introduction</a>
+                            <a className="main" onClick={this.select}>Installation</a>
+                            <a className="mainInner" onClick={this.select}>Keybase</a>
+                            <a className="mainInner" onClick={this.select}>Google Drive</a>
+                            <a className="mainInner" onClick={this.select}>Dropbox</a>
+                            <a className="mainInner" onClick={this.select}>IPFS</a>
+                            <a className="main" onClick={this.select}>FAQ</a>
+                        </div>
+                        <div id="second">
+                            <p className="main">{this.state.text}</p>
+                        </div>
+                    </div>
+            )
+        }
+    }
+
+    class Readme extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <p>Eos diligenter recensenda religionis ubi sic advertatur. Habeantur sanguinem partiales medicinam
+                            cum sua cui. Pro gurgitem rom sed excitari possimus non. Ex virtutibus percepturi si complector
+                            aliquamdiu gi mo. Quaecunque nul verumtamen materialis hoc lor argumentum. Ita finitae hominem
+                            dei nam naturas. Vita pla fere luce adeo item eas. Cera illa atra ii cito et ad. Quiddam age sum
+                            nemoque impetus admodum. Si potuerit quidquid at impulsum im tenebras.</p>
+                    </div>
+            )
+        }
+    }
+
+    class Introduction extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <p>Nudam sexta hoc tes capax utile illis. Mo ad ut priusquam adjuvetis si consistit attigeram
+                            levitatem. Applicare existeret interitum nam suo mei cognoscam pertinere tot praefatio.
+                            Simili videam figere ea mentes ac in. </p>
+                    </div>
+            )
+        }
+    }
+
+    class Installation extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <ul>
+                            <li><Link to="/keybase" activeClassName="active">Keybase</Link></li>
+                            <li><Link to="/gdrive" activeClassName="active">Google Drive</Link></li>
+                            <li><Link to="/dropbox" activeClassName="active">Dropbox</Link></li>
+                            <li><Link to="/ipfs" activeClassName="active">IPFS</Link></li>
+                        </ul>
+                    </div>
+            )
+        }
+    }
+
+    class Keybase extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <p>Keybase</p>
                     </div>
             )
         }
@@ -208,11 +139,6 @@
     class Gdrive extends React.Component {
         constructor(props) {
             super(props);
-        }
-        getDate() {
-            return (
-                    <div>test</div>
-            )
         }
         render() {
             return (
@@ -240,22 +166,14 @@
                         <span className="commands">ln -s ~/Google\ Drive/pagefossil/ .</span>
 
                         <h3>Now files will get saved to <i>pagefossil</i> folder in Google Drive</h3>
-
-
-
                     </div>
-            );
+            )
         }
     }
 
     class Dropbox extends React.Component {
         constructor(props) {
             super(props);
-        }
-        getDate() {
-            return (
-                    <div>test</div>
-            )
         }
         render() {
             return (
@@ -287,7 +205,20 @@
 
 
                     </div>
-            );
+            )
+        }
+    }
+
+    class Ipfs extends React.Component {
+        constructor(props) {
+            super(props);
+        }
+        render() {
+            return (
+                    <div>
+                        <p>IPFS</p>
+                    </div>
+            )
         }
     }
 
@@ -311,55 +242,23 @@
         }
     }
 
-    class Footer extends React.Component {
-        constructor(props) {
-            super(props);
-        }
-        render() {
-            return (
-                    <div>
-                        <div id="footer">
-                            <p id="trademark">© 2016 Pollen, Inc. All rights reserved / Patents pending</p>
-                        </div>
-                    </div>
-            );
-        }
-    }
 
-    class NavMenu extends React.Component {
-        render() {
-            return (
-                    <div className="dropdown">
-                        <ul>
-                            <p>To install, go to </p>
-                            <li><Link to="/gInstall" activeClassName="active">Google Drive</Link></li>
-                            <li><Link to="/dropbox" activeClassName="active">Dropbox</Link></li>
-                            <li><Link to="/keybase" activeClassName="active">Keybase</Link></li>
-                            <li><Link to="/local" activeClassName="active">Local</Link></li>
-                        </ul>
-                    </div>
-            );
-
-        }
-    }
 
     ReactDOM.render(
             <div>
                 <Router>
-                    <Route path="/" component={App}>
-                        <IndexRoute component={Home}/>
-                        <Route path="gdrive" component={NavMenu}/>
-                        <Route path="gInstall" component={Gdrive}/>
+                    <Route path="/" component={Contents}>
+                        <IndexRoute component={Readme}/>
+                        <Route path="keybase" component={Keybase}/>
+                        <Route path="gdrive" component={Gdrive}/>
                         <Route path="dropbox" component={Dropbox}/>
+                        <Route path="ipfs" component={Ipfs}/>
                         <Route path="faq" component={Faq}/>
-                        <Route path="contact" component={Contact}/>
-                        <Route path="board" component={Board}/>
                     </Route>
                 </Router>
-                <Footer/>
             </div>
             ,
-            document.getElementById('react-container')
+            document.getElementById('wrapper')
     );
 </script>
 </body>
